@@ -17,38 +17,38 @@ void setup()
 void draw()
 {  
   
-  if(millis() % 100 == 0) {
-  myPort.write(65);
-  }
-  
-  while ( myPort.available() > 0) {  // If data is available,
-  println("port available!");
-  val = myPort.readStringUntil(lf);
-  if(val!=null) {
-  
-//  print("val" + "  " + val);
-  num = float(val);
-  println("value" + "   " + num);
-  
-  
-  }
-    myPort.clear();       // read it and store it in val
-//    println("control comes here");
-//    println(val);
-  }
+//  if(millis() % 100 == 0) {
+//  myPort.write(65);
+//  }
+//  
+//  while ( myPort.available() > 0) {  // If data is available,
+//  println("port available!");
+//  val = myPort.readStringUntil(lf);
+//  if(val!=null) {
+//  
+////  print("val" + "  " + val);
+//  num = float(val);
+//  println("value" + "   " + num);
+//  
+//  
+//  }
+//    myPort.clear();       // read it and store it in val
+////    println("control comes here");
+////    println(val);
+//  }
 }
 
 void serialEvent (Serial myPort) {
   String val = myPort.readStringUntil ('\n');
   if (val != null) {
-    num = trim(num);
-    println(num);
+    val = trim(val);
+    println(val);
     
     if (firstContact == false) {
       if (val.equals("Hello")) {
         myPort.clear();
         firstContact = true;
-        usbPort.write('A');
+        myPort.write('A');
         println("contact");
       }
     }
