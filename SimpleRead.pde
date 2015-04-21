@@ -4,7 +4,6 @@ Serial myPort;
 float num;
 boolean firstContact = false;
 
-
 void setup() 
 {
   size(200, 200);
@@ -42,7 +41,8 @@ void serialEvent (Serial myPort) {
   String val = myPort.readStringUntil ('\n');
   if (val != null) {
     val = trim(val);
-    println(val);
+    float newVal = float(val);
+    println(newVal);
     
     if (firstContact == false) {
       if (val.equals("Hello")) {
@@ -52,8 +52,8 @@ void serialEvent (Serial myPort) {
         println("contact");
       }
     }
-    
   }
+//  myPort.write('A');
 }
       
   
